@@ -64,9 +64,9 @@ public class DST<Value> {
           if(x.key.equals(key)){
             result = x;
           } else if(bitAt(key, pos) == false){ //move left
-            result = /* TODO: make a recursive call on the left child and the next bit */
+            result = get(x.left ,key,--pos);/* TODO: make a recursive call on the left child and the next bit */
           } else { //move right
-            result = /* TODO: make a recursive call on the right child and the next bit */
+            result = get(x.right ,key,--pos) ;/* TODO: make a recursive call on the right child and the next bit */
           }
         }
         return result;
@@ -93,11 +93,12 @@ public class DST<Value> {
             result.val = val;
         } else if(pos >= 0) {
           if(x.key.equals(key)){ //key is found, update value
+           x.val=val;
             /* TODO: Change the value of the node x */
           } else if(bitAt(key, pos) == false){ //move left
-            x.left = /* TODO: make a recursive call on the left child and the next bit */
+            x.left=put(x.left,key,val,--pos); /* TODO: make a recursive call on the left child and the next bit */
           } else { //move right
-            x.right = /* TODO: make a recursive call on the right child and the next bit */
+            x.right= put(x.right,key,val,--pos);/* TODO: make a recursive call on the right child and the next bit */
           }
         }
         return result;
